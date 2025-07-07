@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 나의 영화 주인공 찾기</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 시작 화면 -->
+    <div id="startScreen" class="screen active">
+        <div class="cinema-background">
+            <div class="spotlight"></div>
+            <div class="film-strip"></div>
+        </div>
+        <div class="content-container">
+            <div class="title-section">
+                <h1 class="main-title">
+                    <span class="title-line">🎬 나의 영화 주인공</span>
+                    <span class="title-line">찾기 테스트</span>
+                </h1>
+                <p class="subtitle">당신은 어떤 영화의 주인공과 닮았을까요?</p>
+                <p class="description">15개의 질문을 통해 당신의 성향을 분석하고<br>24가지 영화 주인공 중 가장 닮은 캐릭터를 찾아드립니다.</p>
+            </div>
+            <button id="startBtn" class="start-button">
+                <span class="button-text">테스트 시작하기</span>
+                <span class="button-icon">🎭</span>
+            </button>
+        </div>
+        <div class="cinema-seats">
+            <div class="seat-row">
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat occupied"></div>
+                <div class="seat"></div>
+                <div class="seat occupied"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 질문 화면 -->
+    <div id="questionScreen" class="screen">
+        <div class="cinema-background">
+            <div class="spotlight question-spotlight"></div>
+            <div class="film-strip"></div>
+        </div>
+        <div class="content-container">
+            <div class="progress-section">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">1 / 15</span>
+            </div>
+            
+            <div class="question-section">
+                <h2 class="question-title" id="questionTitle">질문이 여기에 표시됩니다</h2>
+                <div class="options-container" id="optionsContainer">
+                    <!-- 선택지들이 JavaScript로 동적 생성 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div id="resultScreen" class="screen">
+        <div class="cinema-background">
+            <div class="spotlight result-spotlight"></div>
+            <div class="film-strip"></div>
+        </div>
+        <div class="content-container">
+            <div class="result-section">
+                <div class="result-header">
+                    <h2 class="result-title">🎬 당신의 영화 주인공은...</h2>
+                </div>
+                
+                <div class="result-card" id="resultCard">
+                    <div class="character-icon" id="characterIcon">🎭</div>
+                    <h3 class="character-name" id="characterName">캐릭터 이름</h3>
+                    <p class="character-subtitle" id="characterSubtitle">영화 제목</p>
+                    <p class="character-description" id="characterDescription">캐릭터 설명이 여기에 표시됩니다.</p>
+                </div>
+
+                <div class="result-actions">
+                    <button id="shareBtn" class="action-button share-btn">
+                        <span>결과 공유하기</span>
+                        <span>📱</span>
+                    </button>
+                    <button id="retryBtn" class="action-button retry-btn">
+                        <span>다시 테스트하기</span>
+                        <span>🔄</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 로딩 화면 -->
+    <div id="loadingScreen" class="screen">
+        <div class="cinema-background">
+            <div class="spotlight loading-spotlight"></div>
+            <div class="film-strip"></div>
+        </div>
+        <div class="content-container">
+            <div class="loading-section">
+                <div class="film-reel">
+                    <div class="reel"></div>
+                    <div class="reel"></div>
+                </div>
+                <h2 class="loading-title">결과 분석 중...</h2>
+                <p class="loading-subtitle">당신의 영화 주인공을 찾고 있습니다</p>
+                <div class="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
