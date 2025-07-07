@@ -472,61 +472,47 @@ function showResult() {
 
 // 결과 계산 함수
 function calculateResult() {
-    // 점수 정규화 (최대 45점 기준으로 정규화)
-    const maxPossibleScore = 45; // 15문항 × 최대 3점
+    const maxPossibleScore = 45;
     const normalizedScores = {
         A: (scores.A / maxPossibleScore) * 40,
         E: (scores.E / maxPossibleScore) * 40,
         I: (scores.I / maxPossibleScore) * 40,
         S: (scores.S / maxPossibleScore) * 40
     };
-    
-    // 각 결과에 대해 매칭 점수 계산
+
     let bestMatch = null;
     let bestScore = -1;
-    
+
     results.forEach(result => {
-        let matchScore = 0;
-        let criteriaCount = 0;
-        
-        Object.keys(result.criteria).forEach(trait => {
+        let totalSimilarity = 0;
+        let count = 0;
+
+        for (const trait in result.criteria) {
             const [min, max] = result.criteria[trait];
             const userScore = normalizedScores[trait];
-            
+
+            // 점수가 범위 내에 있으면 최고 점수 1
             if (userScore >= min && userScore <= max) {
-                matchScore += userScore;
-                criteriaCount++;
-            } else if (userScore < min) {
-                matchScore += userScore * 0.5; // 부분 점수
+                totalSimilarity += 1;
+            } else {
+                // 범위 밖이면 거리 비례 감점, 최대 1 → 0까지 선형 감소
+                const distance = Math.min(Math.abs(userScore - min), Math.abs(userScore - max));
+                const range = max - min;
+                const similarity = Math.max(0, 1 - distance / range);
+                totalSimilarity += similarity;
             }
-        });
-        
-        // 기준을 만족하는 특성이 많을수록 높은 점수
-        const finalScore = matchScore * criteriaCount;
-        
-        if (finalScore > bestScore) {
-            bestScore = finalScore;
+
+            count++;
+        }
+
+        const averageScore = totalSimilarity / count;
+
+        if (averageScore > bestScore) {
+            bestScore = averageScore;
             bestMatch = result;
         }
     });
-    
-    // 매칭되는 결과가 없으면 가장 높은 점수의 특성에 따라 결정
-    if (!bestMatch) {
-        const dominantTrait = Object.keys(normalizedScores).reduce((a, b) => 
-            normalizedScores[a] > normalizedScores[b] ? a : b
-        );
-        
-        // 주요 특성에 따른 기본 결과
-        const defaultResults = {
-            A: results[0], // 냉정한 전략가
-            E: results[3], // 순애보 로맨티스트
-            I: results[12], // 그림자 속 외톨이
-            S: results[14] // 유쾌한 단짝 주인공
-        };
-        
-        bestMatch = defaultResults[dominantTrait];
-    }
-    
+
     return bestMatch;
 }
 
