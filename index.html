@@ -8,124 +8,130 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 광고 영역 상단 -->
-    <div class="ad-container" style="margin: 20px auto; text-align: center; width: 300px; height: 250px; border: 2px dashed #ccc; background-color: #f9f9f9; position: relative;">
-        <ins class="kakao_ad_area" style="display:none;"
-            data-ad-unit="DAN-OVjPVM8bAqz5BcYf"
-            data-ad-width="300"
-            data-ad-height="250"></ins>
-        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:14px; color:#888;">
-        </div>
-    </div>
+    <div class="container">
 
-    <!-- 시작 화면 -->
-    <div id="startScreen" class="screen active">
-        <div class="cinema-background">
-            <div class="spotlight"></div>
-            <div class="film-strip"></div>
-        </div>
-        <div class="content-container">
-            <div class="title-section">
-                <h1 class="main-title">
-                    <span class="title-line">🎬 나의 영화 주인공</span>
-                    <span class="title-line">찾기 테스트</span>
-                </h1>
-                <p class="subtitle">당신은 어느 영화의 주인공과 달아있을까요?</p>
-                <p class="description">15개의 질문을 통해 당신의 성향을 배열하고<br>24가지 영화 주인공 중 가장 달리는 캐릭터를 찾아드릴까요.</p>
-            </div>
-            <button id="startBtn" class="start-button">
-                <span class="button-text">테스트 시작하기</span>
-                <span class="button-icon">🎭</span>
-            </button>
-        </div>
-        <div class="cinema-seats">
-            <div class="seat-row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
+        <!-- 광고 영역 상단 -->
+        <div class="ad-container" style="margin: 20px auto; text-align: center;
+                width: 300px; height: 250px;
+                border: 2px dashed #ccc; background-color: #f9f9f9; position: relative;">
+            <ins class="kakao_ad_area" style="display:none;"
+                data-ad-unit="DAN-OVjPVM8bAqz5BcYf"
+                data-ad-width="300"
+                data-ad-height="250"></ins>
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+                            font-size:14px; color:#888;">
             </div>
         </div>
-    </div>
 
-    <!-- 질문 화면 -->
-    <div id="questionScreen" class="screen">
-        <div class="cinema-background">
-            <div class="spotlight question-spotlight"></div>
-            <div class="film-strip"></div>
-        </div>
-        <div class="content-container">
-            <div class="progress-section">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+        <!-- 시작 화면 -->
+        <div id="startScreen" class="screen active">
+            <div class="cinema-background">
+                <div class="spotlight"></div>
+                <div class="film-strip"></div>
+            </div>
+            <div class="content-container">
+                <div class="title-section">
+                    <h1 class="main-title">
+                        <span class="title-line">🎬 나의 영화 주인공</span>
+                        <span class="title-line">찾기 테스트</span>
+                    </h1>
+                    <p class="subtitle">당신은 어느 영화의 주인공과 달아있을까요?</p>
+                    <p class="description">15개의 질문을 통해 당신의 성향을 배열하고<br>24가지 영화 주인공 중 가장 달리는 캐릭터를 찾아드릴까요.</p>
                 </div>
-                <span class="progress-text" id="progressText">1 / 15</span>
+                <button id="startBtn" class="start-button">
+                    <span class="button-text">테스트 시작하기</span>
+                    <span class="button-icon">🎭</span>
+                </button>
             </div>
-            
-            <div class="question-section">
-                <h2 class="question-title" id="questionTitle">질문이 여기에 표시됩니다</h2>
-                <div class="options-container" id="optionsContainer">
-                    <!-- 선택지들이 JavaScript로 동적 생성 -->
+            <div class="cinema-seats">
+                <div class="seat-row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 결과 화면 -->
-    <div id="resultScreen" class="screen">
-        <div class="cinema-background">
-            <div class="spotlight result-spotlight"></div>
-            <div class="film-strip"></div>
-        </div>
-        <div class="content-container">
-            <div class="result-section">
-                <div class="result-header">
-                    <h2 class="result-title">🎬 당신의 영화 주인공은...</h2>
+        <!-- 질문 화면 -->
+        <div id="questionScreen" class="screen">
+            <div class="cinema-background">
+                <div class="spotlight question-spotlight"></div>
+                <div class="film-strip"></div>
+            </div>
+            <div class="content-container">
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">1 / 15</span>
                 </div>
                 
-                <div class="result-card" id="resultCard">
-                    <div class="character-icon" id="characterIcon">🎭</div>
-                    <h3 class="character-name" id="characterName">캐릭터 이름</h3>
-                    <p class="character-subtitle" id="characterSubtitle">영화 제목</p>
-                    <p class="character-description" id="characterDescription">캐릭터 설명이 여기에 표시됩니다.</p>
-                </div>
-
-                <div class="result-actions">
-                    <button id="shareBtn" class="action-button share-btn">
-                        <span>결과 공유하기</span>
-                        <span>📱</span>
-                    </button>
-                    <button id="retryBtn" class="action-button retry-btn">
-                        <span>다시 테스트하기</span>
-                        <span>🔄</span>
-                    </button>
+                <div class="question-section">
+                    <h2 class="question-title" id="questionTitle">질문이 여기에 표시됩니다</h2>
+                    <div class="options-container" id="optionsContainer">
+                        <!-- 선택지들이 JavaScript로 동적 생성 -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 로딩 화면 -->
-    <div id="loadingScreen" class="screen">
-        <div class="cinema-background">
-            <div class="spotlight loading-spotlight"></div>
-            <div class="film-strip"></div>
-        </div>
-        <div class="content-container">
-            <div class="loading-section">
-                <div class="film-reel">
-                    <div class="reel"></div>
-                    <div class="reel"></div>
+        <!-- 결과 화면 -->
+        <div id="resultScreen" class="screen">
+            <div class="cinema-background">
+                <div class="spotlight result-spotlight"></div>
+                <div class="film-strip"></div>
+            </div>
+            <div class="content-container">
+                <div class="result-section">
+                    <div class="result-header">
+                        <h2 class="result-title">🎬 당신의 영화 주인공은...</h2>
+                    </div>
+                    
+                    <div class="result-card" id="resultCard">
+                        <div class="character-icon" id="characterIcon">🎭</div>
+                        <h3 class="character-name" id="characterName">캐릭터 이름</h3>
+                        <p class="character-subtitle" id="characterSubtitle">영화 제목</p>
+                        <p class="character-description" id="characterDescription">캐릭터 설명이 여기에 표시됩니다.</p>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="shareBtn" class="action-button share-btn">
+                            <span>결과 공유하기</span>
+                            <span>📱</span>
+                        </button>
+                        <button id="retryBtn" class="action-button retry-btn">
+                            <span>다시 테스트하기</span>
+                            <span>🔄</span>
+                        </button>
+                    </div>
                 </div>
-                <h2 class="loading-title">결과 배열 중...</h2>
-                <p class="loading-subtitle">당신의 영화 주인공을 찾고 있습니다</p>
-                <div class="loading-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            </div>
+        </div>
+
+        <!-- 로딩 화면 -->
+        <div id="loadingScreen" class="screen">
+            <div class="cinema-background">
+                <div class="spotlight loading-spotlight"></div>
+                <div class="film-strip"></div>
+            </div>
+            <div class="content-container">
+                <div class="loading-section">
+                    <div class="film-reel">
+                        <div class="reel"></div>
+                        <div class="reel"></div>
+                    </div>
+                    <h2 class="loading-title">결과 배열 중...</h2>
+                    <p class="loading-subtitle">당신의 영화 주인공을 찾고 있습니다</p>
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </div>
