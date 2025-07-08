@@ -26,13 +26,34 @@
                 display: none;
             }
         }
+		
+		/* 상단 고정 광고 스타일 */
+		.top-fixed-ad {
+			position: fixed;
+			top: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 300px;
+			height: 250px;
+			z-index: 1000;
+			background-color: #f9f9f9;
+			border: 2px dashed #ccc;
+			text-align: center;
+			padding: 10px;
+		}
+
+		@media (max-width: 768px) {
+			.top-fixed-ad {
+				display: none;
+			}
+		}
     </style>
 </head>
 <body>
     <div class="container">
 
         <!-- 광고 영역 상단 -->
-        <div class="ad-container" style="margin: 20px auto; text-align: center;
+        <div class="top-fixed-ad" style="margin: 20px auto; text-align: center;
                 width: 300px; height: 250px;
                 border: 2px dashed #ccc; background-color: #f9f9f9; position: relative;">
             <ins class="kakao_ad_area" style="display:none;"
